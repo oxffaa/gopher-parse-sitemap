@@ -1,4 +1,7 @@
 # gopher-parse-sitemap
+
+[![Build Status](https://travis-ci.org/oxffaa/gopher-parse-sitemap.svg?branch=master)](https://travis-ci.org/oxffaa/gopher-parse-sitemap)
+
 A high effective library for parsing big sitemaps. See https://www.sitemaps.org/ for more information about the sitemap format.
 
 ## Why yet another sitemaps parsing library?
@@ -20,7 +23,7 @@ Yes. Of course, you can just load a sitemap to memory.
 
 ```golang
 result := make([]string, 0, 0)
-err := ParseIndexFromFile("./testdata/sitemap-index.xml", func(e IndexEntry) error {
+err := sitemap.ParseIndexFromFile("./testdata/sitemap-index.xml", func(e IndexEntry) error {
     result = append(result, e.GetLocation())
     return nil
 })
@@ -45,4 +48,4 @@ Well done, you can start to create something awesome.
 
 ## Documentation
 
-Please, see here https://godoc.org/github.com/oxffaa/gopher-parse-sitemap for documentation.
+Please, see [here](https://godoc.org/github.com/oxffaa/gopher-parse-sitemap) for documentation.
