@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>http://HOST/</loc>
+  </url>
+  <url>
+    <loc>http://HOST/tools/</loc>
+    <lastmod>2015-05-07T19:13:09+09:00</lastmod>
+  </url>
+  <url>
+    <loc>http://HOST/contribution-to-oss/</loc>
+    <lastmod>2015-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>http://HOST/page-1/</loc>
+    <lastmod>2015-05-07T19:13:09+09:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+</urlset>

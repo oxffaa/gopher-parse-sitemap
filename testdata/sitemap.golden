@@ -1,0 +1,15 @@
+http://HOST/
+always
+0.5
+http://HOST/tools/
+2015-05-07T19:13:09+09:00
+always
+0.5
+http://HOST/contribution-to-oss/
+2015-05-07T00:00:00Z
+monthly
+0.5
+http://HOST/page-1/
+2015-05-07T19:13:09+09:00
+monthly
+0.9
