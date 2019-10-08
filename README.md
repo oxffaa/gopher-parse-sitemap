@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/oxffaa/gopher-parse-sitemap.svg?branch=master)](https://travis-ci.org/oxffaa/gopher-parse-sitemap)
 
-A high effective library for parsing big sitemaps. See https://www.sitemaps.org/ for more information about the sitemap format.
+A high effective golang library for parsing big-sized sitemaps and avoiding high memory usage. The sitemap parser was written on golang without external dependencies. See https://www.sitemaps.org/ for more information about the sitemap format.
 
 ## Why yet another sitemaps parsing library?
 
@@ -29,7 +29,7 @@ err := sitemap.ParseIndexFromFile("./testdata/sitemap-index.xml", func(e IndexEn
 })
 ```
 
-But if you are pretty sure that you don't need to handle big-sized sitemaps, maybe better to choose the library with simpler and suitable API. In that case, you can try projects like https://github.com/yterajima/go-sitemap, https://github.com/snabb/sitemap, and https://github.com/decaseal/go-sitemap-parser.
+But if you are pretty sure that you don't need to handle big-sized sitemaps, may be better to choose a library with simpler and more suitable API. In that case, you can try projects like https://github.com/yterajima/go-sitemap, https://github.com/snabb/sitemap, and https://github.com/decaseal/go-sitemap-parser.
 
 ## Install
 
