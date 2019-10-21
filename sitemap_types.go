@@ -3,10 +3,11 @@ package sitemap
 import "time"
 
 type sitemapEntry struct {
-	Location        string    `xml:"loc"`
-	LastModified    string    `xml:"lastmod,omitempy"`
-	ChangeFrequency Frequency `xml:"changefreq,omitempty"`
-	Priority        float32   `xml:"priority,omitempty"`
+	Location           string `xml:"loc"`
+	LastModified       string `xml:"lastmod,omitempy"`
+	ParsedLastModified *time.Time
+	ChangeFrequency    Frequency `xml:"changefreq,omitempty"`
+	Priority           float32   `xml:"priority,omitempty"`
 }
 
 func newSitemapEntry() *sitemapEntry {
@@ -18,7 +19,10 @@ func (e *sitemapEntry) GetLocation() string {
 }
 
 func (e *sitemapEntry) GetLastModified() *time.Time {
-	return parseDateTime(e.LastModified)
+	if e.ParsedLastModified == nil && e.LastModified != "" {
+		e.ParsedLastModified = parseDateTime(e.LastModified)
+	}
+	return e.ParsedLastModified
 }
 
 func (e *sitemapEntry) GetChangeFrequency() Frequency {
@@ -30,8 +34,9 @@ func (e *sitemapEntry) GetPriority() float32 {
 }
 
 type sitemapIndexEntry struct {
-	Location     string `xml:"loc"`
-	LastModified string `xml:"lastmod,omitempty"`
+	Location           string `xml:"loc"`
+	LastModified       string `xml:"lastmod,omitempty"`
+	ParsedLastModified *time.Time
 }
 
 func newSitemapIndexEntry() *sitemapIndexEntry {
@@ -43,7 +48,10 @@ func (e *sitemapIndexEntry) GetLocation() string {
 }
 
 func (e *sitemapIndexEntry) GetLastModified() *time.Time {
-	return parseDateTime(e.LastModified)
+	if e.ParsedLastModified == nil && e.LastModified != "" {
+		e.ParsedLastModified = parseDateTime(e.LastModified)
+	}
+	return e.ParsedLastModified
 }
 
 func parseDateTime(value string) *time.Time {
