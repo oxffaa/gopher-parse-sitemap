@@ -1,6 +1,7 @@
 package sitemap
 
 import (
+	"errors"
 	"fmt"
 	"io/ioutil"
 	"strings"
@@ -69,6 +70,23 @@ func TestParseSitemap(t *testing.T) {
 
 	if sb.String() != string(expected) {
 		t.Error("Unxepected result")
+	}
+}
+
+func TestParseSitemap_BreakingOnError(t *testing.T) {
+	var counter = 0
+	breakErr := errors.New("break error")
+	err := ParseFromFile("./testdata/sitemap.xml", func(e Entry) error {
+		counter++
+		return breakErr
+	})
+
+	if counter != 1 {
+		t.Error("Error didn't break parsing")
+	}
+
+	if breakErr != err {
+		t.Error("If consumer failed, ParseSitemap should return consumer error")
 	}
 }
 
