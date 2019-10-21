@@ -14,7 +14,10 @@ func entryParser(decoder *xml.Decoder, se *xml.StartElement, consume EntryConsum
 			return decodeError
 		}
 
-		consume(entry)
+		consumerError := consume(entry)
+		if consumerError != nil {
+			return consumerError
+		}
 	}
 
 	return nil
@@ -29,7 +32,10 @@ func indexEntryParser(decoder *xml.Decoder, se *xml.StartElement, consume IndexE
 			return decodeError
 		}
 
-		consume(entry)
+		consumerError := consume(entry)
+		if consumerError != nil {
+			return consumerError
+		}
 	}
 
 	return nil
