@@ -47,6 +47,7 @@ type Entry interface {
 	GetLastModified() *time.Time
 	GetChangeFrequency() Frequency
 	GetPriority() float32
+	GetNews() *News
 }
 
 // IndexEntry is an interface describes an element \ an URL in a sitemap index file.
