@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">
+  <url>
+    <loc>http://HOST/</loc>
+  </url>
+  <url>
+    <loc>http://HOST/tools/</loc>
+    <lastmod>2015-05-07T19:13:09+09:00</lastmod>
+    <news:news>
+      <news:publication>
+        <news:name>HOST news</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2015-05-07</news:publication_date>
+      <news:title>tools</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>http://HOST/contribution-to-oss/</loc>
+    <lastmod>2015-05-07</lastmod>
+    <changefreq>monthly</changefreq>
+    <news:news>
+      <news:publication>
+        <news:name>HOST news</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2015-05-07T19:20+01:00</news:publication_date>
+      <news:title>contribution-to-oss</news:title>
+    </news:news>
+  </url>
+  <url>
+    <loc>http://HOST/page-1/</loc>
+    <lastmod>2015-05-07T19:13:09+09:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <news:news>
+      <news:publication>
+        <news:name>HOST news</news:name>
+        <news:language>en</news:language>
+      </news:publication>
+      <news:publication_date>2015-05-07T19:20:30.45+01:00</news:publication_date>
+      <news:title>page-1</news:title>
+    </news:news>
+  </url>
+</urlset>

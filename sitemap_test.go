@@ -125,6 +125,54 @@ func TestParseSitemapIndex(t *testing.T) {
 	}
 }
 
+func TestParseSitemapNews(t *testing.T) {
+	var (
+		counter int
+		sb      strings.Builder
+	)
+	err := ParseFromFile("./testdata/sitemap-news.xml", func(e Entry) error {
+		counter++
+
+		fmt.Fprintln(&sb, e.GetLocation())
+		lastmod := e.GetLastModified()
+		if lastmod != nil {
+			fmt.Fprintln(&sb, lastmod.Format(time.RFC3339))
+		}
+		fmt.Fprintln(&sb, e.GetChangeFrequency())
+		fmt.Fprintln(&sb, e.GetPriority())
+		news := e.GetNews()
+		if news == nil {
+			return nil
+		}
+		fmt.Fprintln(&sb, news.Publication.Name)
+		fmt.Fprintln(&sb, news.Publication.Language)
+		if news.GetPublicationDate() != nil {
+			fmt.Fprintln(&sb, news.GetPublicationDate().Format(time.RFC3339))
+		}
+		fmt.Fprintln(&sb, news.Title)
+		return nil
+	})
+
+	if err != nil {
+		t.Errorf("Parsing failed with error %s", err)
+	}
+
+	if counter != 4 {
+		t.Errorf("Expected 4 elements, but given only %d", counter)
+	}
+
+	expected, err := ioutil.ReadFile("./testdata/sitemap-news.golden")
+	if err != nil {
+		t.Errorf("Can't read golden file due to %s", err)
+	}
+
+	if sb.String() != string(expected) {
+		t.Logf("%s", sb.String())
+		t.Logf("%s", expected)
+		t.Error("Unxepected result")
+	}
+}
+
 /*
  * Private API tests
  */
