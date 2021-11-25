@@ -12,7 +12,7 @@ Time by time needs to parse really huge sitemaps. If you just unmarshal the whol
 The solution is to handle sitemap entries on the fly. That is read one entity, consume it, repeat while there are unhandled items in the sitemap.
 
 ```golang
-err := sitemap.ParseFromFile("./testdata/sitemap.xml", func(e Entry) error {
+err := sitemap.ParseFromFile("./testdata/sitemap.xml", func(e sitemap.Entry) error {
     return fmt.Println(e.GetLocation())
 })
 ```
@@ -23,7 +23,7 @@ Yes. Of course, you can just load a sitemap to memory.
 
 ```golang
 result := make([]string, 0, 0)
-err := sitemap.ParseIndexFromFile("./testdata/sitemap-index.xml", func(e IndexEntry) error {
+err := sitemap.ParseIndexFromFile("./testdata/sitemap-index.xml", func(e sitemap.IndexEntry) error {
     result = append(result, e.GetLocation())
     return nil
 })
