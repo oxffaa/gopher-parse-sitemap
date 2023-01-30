@@ -125,6 +125,29 @@ func TestParseSitemapIndex(t *testing.T) {
 	}
 }
 
+func TestImages(t *testing.T) {
+	expected := []string{
+		"https://example.com/image.jpg",
+		"https://example.com/photo.jpg",
+		"https://example.com/picture.jpg",
+	}
+	index := 0
+
+	err := ParseFromFile("./testdata/sitemap-image.xml", func(e Entry) error {
+		images := e.GetImages()
+		for _, image := range images {
+			if image.ImageLocation != expected[index] {
+				t.Error(t, "Expected image location %v  but got: %v", expected[index], image.ImageLocation)
+			}
+			index++
+		}
+		return nil
+	})
+	if err != nil {
+		panic(err)
+	}
+}
+
 /*
  * Private API tests
  */

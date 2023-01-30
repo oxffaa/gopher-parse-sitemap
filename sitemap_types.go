@@ -8,7 +8,7 @@ type sitemapEntry struct {
 	ParsedLastModified *time.Time
 	ChangeFrequency    Frequency `xml:"changefreq,omitempty"`
 	Priority           float32   `xml:"priority,omitempty"`
-	Image              Image     `xml:"image,omitempty"`
+	Images             []Image   `xml:"image,omitempty"`
 }
 
 type Image struct {
@@ -22,6 +22,10 @@ func newSitemapEntry() *sitemapEntry {
 
 func (e *sitemapEntry) GetLocation() string {
 	return e.Location
+}
+
+func (e *sitemapEntry) GetImages() []Image {
+	return e.Images
 }
 
 func (e *sitemapEntry) GetLastModified() *time.Time {
