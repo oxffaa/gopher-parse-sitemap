@@ -3,6 +3,7 @@
 package sitemap
 
 import (
+	"compress/gzip"
 	"encoding/xml"
 	"io"
 	"net/http"
@@ -97,8 +98,15 @@ func ParseFromSite(url string, consumer EntryConsumer) error {
 		return err
 	}
 	defer res.Body.Close()
-
-	return Parse(res.Body, consumer)
+	reader := res.Body
+	if res.Header.Get("Content-Encoding") == "gzip" {
+		reader, err = gzip.NewReader(res.Body)
+		if err != nil {
+			return err
+		}
+		defer reader.Close()
+	}
+	return Parse(reader, consumer)
 }
 
 // IndexEntryConsumer is a type represents consumer of parsed sitemaps indexes entries
